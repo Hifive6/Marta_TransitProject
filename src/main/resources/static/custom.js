@@ -2,6 +2,7 @@ var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: parseFloat(busLocations[0].LATITUDE), lng: parseFloat(busLocations[0].LONGITUDE) },
+        // center: { lat: parseFloat(personLocations[0].LATITUDE), lng: parseFloat(personLocations[0].LONGITUDE) },
         zoom: 15,
         scrollwheel: false
     });

@@ -39,7 +39,7 @@ public class TransitService {
 
     private Location getCoordinates(String description) {
         description = description.replace(" ", "+");
-        String url = geocodingUrl + description + "+GA&Key=" + googleApiKey;
+        String url = geocodingUrl + description + "+GA&key=" + googleApiKey;
         RestTemplate restTemplate = new RestTemplate();
         GeocodingResponse response = restTemplate.getForObject(url, GeocodingResponse.class);
         return response.results.get(0).geometry.location;
@@ -67,7 +67,7 @@ public class TransitService {
             double latDistance = Double.parseDouble(busLocation.lat) - Double.parseDouble(personLocation.lat);
             double lngDistance = Double.parseDouble(busLocation.lng) - Double.parseDouble(personLocation.lng);
 
-            if (Math.abs(latDistance) <= 0.02 && Math.abs(lngDistance) <= 0.02) {
+            if (Math.abs(latDistance) <= 0.05 && Math.abs(lngDistance) <= 0.05) {
                 double distance = getDistance(busLocation, personLocation);
                 if (distance <= 1) {
                     bus.distance = (double) Math.round(distance * 100) / 100;
